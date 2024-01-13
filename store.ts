@@ -10,12 +10,12 @@ const addToCart = (product: Product) => ({
     type: ADD_TO_CART,
     payload: product,
 });
-const loginUser = (user: User) => ({
+const loginUser = (user: User | null) => ({
     type: LOGIN,
     payload: user,
 });
 const deleteFromCart = (product: Product) => ({
-    type: ADD_TO_CART,
+    type: DELETE_FROM_CART,
     payload: product,
 });
 
@@ -80,7 +80,7 @@ const rootReducer = (state: AppState = initialState, action: any) => {
             const filteredCart = state.cart.filter((cart: Product) => cart.id !== action.payload.id);
             return {
                 ...state,
-                carts: filteredCart,
+                cart: filteredCart,
             };
         default:
             return state;

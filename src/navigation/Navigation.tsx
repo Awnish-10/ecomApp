@@ -4,6 +4,7 @@ import Cart from '../screens/Cart';
 import ProductList from '../screens/ProductList';
 import Product from '../screens/Product';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { useSelector } from 'react-redux';
 
 const defaultNavOptions = {
     headerStyle: {
@@ -15,6 +16,7 @@ const defaultNavOptions = {
 const BottomTabNavigator = createBottomTabNavigator();
 
 export const BottomNavigator = () => {
+    const cart = useSelector((state: any) => state.cart);
     return (
         <BottomTabNavigator.Navigator
             screenOptions={{
@@ -27,8 +29,8 @@ export const BottomNavigator = () => {
                 options={{
                     headerShown: false,
                     tabBarLabel: 'Home',
-                    tabBarIcon: ({ color, size }) => (
-                        <Icon name="home" size={size} color={color} />
+                    tabBarIcon: ({  size, focused }) => (
+                        <Icon name="home" size={size} color={focused?"#163020":"#B6C4B6"} />
                     ),
                 }}
 
@@ -39,9 +41,12 @@ export const BottomNavigator = () => {
                 options={{
                     headerShown: false,
                     tabBarLabel: 'Cart',
-                    tabBarBadge: 2,
-                    tabBarIcon: ({ color, size }) => (
-                        <Icon name="shopping-cart" size={size} color={color} />
+                    tabBarBadge: cart.length,
+                    tabBarBadgeStyle: {
+                        backgroundColor: '#304D30', // Set the color of the tabBarBadge
+                      },
+                    tabBarIcon: ({ size , focused}) => (
+                        <Icon name="shopping-cart" size={size} color={focused?"#163020":"#B6C4B6"} />
                     ),
                 }}
             />
