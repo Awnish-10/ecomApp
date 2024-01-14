@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, ActivityIndicator } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import Icon from "react-native-vector-icons/FontAwesome"
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,8 +13,7 @@ const ProductList = ({navigation}:{navigation:any}) => {
   const [categories, setcategories] = useState([])
   const [selectedCategory, setselectedcategory] = useState(null)
   const [products, setproducts] = useState([])
-// console.log("categories",categories);
-// console.log("products",products);
+  const [loading, setLoading] = useState(true)
   const handleLogout = () => {
     dispatch(loginUser(null))
   }
@@ -37,12 +36,15 @@ useEffect(() => {
     try {
       const response = await axios.get('https://fakestoreapi.com/products');
       setproducts(response.data);
+      setLoading(false)
     } catch (error) {
       console.log("err", error);
 
     }
   }
   return (
+    <>
+    {loading?<View style={[styles.container,{justifyContent:"center"}]}><ActivityIndicator /></View>:
     <View style={styles.container}>
       <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'space-between' }}>
         <Icon name="amazon" size={30} color="#163020" />
@@ -53,8 +55,6 @@ useEffect(() => {
       </View>
       <View style={styles.verticalSpacer} />
       <View style={styles.sectionTitleAndLinkWrapper}>
-            {/* Section title component */}
-            {/* <SectionTitle title="Categories" /> */}
             <Text style={styles.sectionTitle}>{'Categories'}</Text>
           
           </View>
@@ -124,8 +124,8 @@ useEffect(() => {
             </ScrollView>
            
           
-      {/* <Text>ProductList</Text> */}
-    </View>
+    </View>}
+    </>
   )
 }
 const styles = StyleSheet.create({

@@ -15,20 +15,16 @@ const CustomInput: React.FC<Props> = ({ error, testID, showTitle = true, text, p
    
 
 
-
-
-
     return (
         <View style={styles.container}>
             {showTitle && <Text style={styles.title}>{placeholder}</Text>}
             <View style={styles.searchSection}>
-            {/* <Icon name="rocket" size={30} color="#900" /> */}
             
                 <TextInput
                     placeholderTextColor="#94A3B8"
                     testID={testID}
                     style={[styles.input, { borderColor: `${error ? 'red' : 'grey'}` }]}
-                    placeholder={placeholder} //UI Engine::From Sketch
+                    placeholder={placeholder} 
                     // placeholderTextColor="grey"
                     value={text}
                     onChangeText={(text) => onChangeText(text)}

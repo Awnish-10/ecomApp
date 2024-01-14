@@ -23,14 +23,11 @@ const ProductCard: React.FC<Props> = ({
     onPress,
 }) => {
     const dispatch = useDispatch()
+
     const cart = useSelector((state: any) => state.cart);
     const isPresent = cart.some((item:any) => item.id === product.id)
-    // Using context
-console.log("cart",cart);
+ 
 
-    // Storing theme config according to the theme mode
-
-    // Returning
     const handleCart = ()=>{
         isPresent?
         dispatch(deleteFromCart(product))
@@ -40,7 +37,6 @@ console.log("cart",cart);
         <TouchableOpacity
             style={styles.productCard}
             onPress={onPress}>
-            {/* Rotated background */}
 
             {/* Product image */}
             <View style={styles.productImageContainer}>
@@ -51,8 +47,6 @@ console.log("cart",cart);
             <View>
             <Text
                 style={styles.productTitle}
-                // numberOfLines={1}
-                // ellipsizeMode="tail"
                 >
                 {productTitle}
             </Text>
@@ -87,10 +81,7 @@ const styles = StyleSheet.create({
         padding:8,
         borderRadius: 5,
         flexDirection:'row',
-        // minHeight: 195,
         justifyContent: 'flex-start',
-        // marginTop: 50,
-        // position: 'relative',
         backgroundColor: '#B6C4B6'
     },
     productImageContainer:{
@@ -101,25 +92,19 @@ const styles = StyleSheet.create({
     productImage: {
         width: 105,
         height: 150,
-        // resizeMode: 'contain',
         padding:10,
         borderRadius: 5,
-        // alignSelf: 'center',
-        // position: 'absolute',
-        // top: -55,
     },
     productTitle: {
         marginTop:8,
         maxWidth: 200,
         fontSize: 14,
-        // bottom: 50,
         marginHorizontal: 15,
         color: '#163020'
     },
     productPriceAndRatingWrapper: {
         flexDirection: 'row',
         alignItems: 'center',
-        // bottom: 50,
         margin: 16,
     },
     productPrice: {

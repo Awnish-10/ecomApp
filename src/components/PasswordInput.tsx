@@ -22,7 +22,6 @@ const PasswordInput: React.FC<Props> = ({ error, testID, showTitle = true, text,
         <View style={styles.container}>
             {showTitle && <Text style={styles.title}>{placeholder}</Text>}
             <View style={styles.searchSection}>
-            {/* <Icon name="rocket" size={30} color="#900" /> */}
                 <TouchableOpacity
                     style={styles.searchIcon}
                     onPress={() => setShowPassword((prevShowPassword) => !prevShowPassword)}
@@ -33,23 +32,13 @@ const PasswordInput: React.FC<Props> = ({ error, testID, showTitle = true, text,
                     placeholderTextColor="#94A3B8"
                     testID={testID}
                     style={[styles.input, { borderColor: `${error ? 'red' : 'grey'}` }]}
-                    placeholder={placeholder} //UI Engine::From Sketch
+                    placeholder={placeholder} 
                     // placeholderTextColor="grey"
                     value={text}
                     onChangeText={(text) => onChangeText(text)}
                     secureTextEntry={!showPassword}
                 />
-                {/* <TextInput
-    label="Password"
-    value={password}
-    onChangeText={(text) => setPassword(text)}
-    style={styles.input}
-    mode="outlined"
-    secureTextEntry={!showPassword}
-// right={
-
-// }
-/> */}
+             
             </View>
         </View>)
 }

@@ -43,7 +43,7 @@ export const BottomNavigator = () => {
                     tabBarLabel: 'Cart',
                     tabBarBadge: cart.length,
                     tabBarBadgeStyle: {
-                        backgroundColor: '#304D30', // Set the color of the tabBarBadge
+                        backgroundColor: '#304D30', 
                       },
                     tabBarIcon: ({ size , focused}) => (
                         <Icon name="shopping-cart" size={size} color={focused?"#163020":"#B6C4B6"} />
@@ -71,7 +71,16 @@ export const ProductNavigator = () => {
             <ProductStackNavigator.Screen
                 name="Product"
                 component={Product}
-                options={{ headerShown: false }}
+                // options={{ headerShown: false }}
+                options={{
+                    headerStyle: {
+                      backgroundColor: '#EEF0E5', 
+                    },
+                    headerTintColor: '#163020', 
+                    headerTitleStyle: {
+                      fontWeight: 'bold', 
+                    },
+                  }}
             />
         </ProductStackNavigator.Navigator>
     );

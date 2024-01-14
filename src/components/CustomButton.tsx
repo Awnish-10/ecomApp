@@ -8,15 +8,8 @@ interface Props {
 
 }
 
-// Functional component
 const CustomButton: React.FC<Props> = ({label, onPress}) => {
-  // Using context
-//   const {isLightTheme, lightTheme, darkTheme} = useContext(ThemeContext);
 
-  // Storing theme config according to the theme mode
-//   const theme = isLightTheme ? lightTheme : darkTheme;
-
-  // Returning
   return (
     <TouchableOpacity
       style={styles.button}
